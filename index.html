@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Volume Estimator</title>
+  <title>Student Estimator</title>
 
   <meta name="description" content="Interactive app">
   <meta name="author" content="Xizi Chen">
@@ -57,24 +57,24 @@
       <!--Rows have columns - column 1 (7/12) -->
       <div class="col-md-7 mb-4">
 
-        <h2>Volume Estimator</h2>
+        <h2>Student Estimator</h2>
         <hr>
-        <p>This is App Challenge quiz at Sep/30/2019.</p>
-        <p>Main goal: User can get the product of 3 inputs, when 3 input is length/width/height their product is the volume of a cube.</p>
+        <p>This is quiz-Module 3: Vue Challenge (Level 3) at Oct/11/2019.</p>
+        <p>Main goal: User can get the product of 3 inputs with two-way data binding.</p>
         <fieldset class="mt-4">
-          <label for="firstNumber">Enter Length:</label>
+          <label for="firstNumber">studentsPerCourse:</label>
           <input id="firstNumber" type="number" value=7>
           <span id="firstWarning" class="text-danger"></span>
         </fieldset>
 
         <fieldset class="mt-4">
-          <label for="secondNumber">Enter width:</label>
+          <label for="secondNumber"> coursesPerTerm:</label>
           <input id="secondNumber" type="number" value="12">
           <span id="secondWarning" class="text-danger"></span>
         </fieldset>
 
         <fieldset class="mt-4">
-          <label for="thirdNumber">Enter height:</label>
+          <label for="thirdNumber">countOfTerms:</label>
           <input id="thirdNumber" type="number" value=7>
           <span id="thirdWarning" class="text-danger"></span>
         </fieldset>
@@ -92,10 +92,10 @@
       <div class="col-md-5 mb-4">
         <h2>Try these:</h2>
         <hr>
-        <button id="addButton" class="btn btn-primary">Volume</button>
+        <button id="addButton" class="btn btn-primary">Product</button>
         
         <hr>
-        <p id="result"></p>
+        <p id="result">NaN</p>
 
       </div>
       <!-- end column 2-->

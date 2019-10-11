@@ -19,7 +19,7 @@ const updateWithVol = async (event) => {
     const i = parseInt(document.querySelector('#firstNumber').value)
     const j = parseInt(document.querySelector('#secondNumber').value)
     const k = parseInt(document.querySelector('#thirdNumber').value)
-    const ans = `Volume is ${i*j*k}.`
+    const ans = `Total number of students is ${i*j*k}.`
     document.querySelector('#result').innerHTML = ans
   }
 }
