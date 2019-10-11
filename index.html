@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -17,110 +18,88 @@
   <!-- Bootstrap core CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/css/mdb.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
 
-  <!-- required for sticky footer -->
-  <style>
-    body,
-    .sticky-footer-wrapper {
-      min-height: 100vh;
-    }
-  </style>
+  <!-- A bit of CSS required for sticky footer -->
+  <link href="index.css" rel="stylesheet">
 
-<!-- link to manifest and icons -->
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/manifest.json">
+  <!-- Vue component styles -->
+  <link href="components/adder/adder.css" rel="stylesheet">
+  <link href="components/subtracter/subtracter.css" rel="stylesheet">
+  <link href="components/findSum/findSum.css" rel="stylesheet">
+  <link href="components/coder/coder.css" rel="stylesheet">
 
-
-<script>
-  // If service workers are supported by user browser
-  // AFter all content has loaded, register the service worker
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/service-worker.js')
-    })
-  }
-</script>
 </head>
 
 <body class="d-flex flex-column sticky-footer-wrapper">
-  <!-- Bootstrap container or container-fluid (whole width) -->
-  <!-- https://getbootstrap.com/docs/4.0/layout/overview/ -->
-  <!-- margin top 5 ($spacer * 3) -->
-  <main class="container mt-5 flex-fill">
+  <main class="container-fluid  flex-fill">
 
-    <!--Container has rows - first row -->
     <div class="row">
 
-      <!--Rows have columns - column 1 (7/12) -->
-      <div class="col-md-7 mb-4">
-
+      <article id="adder" class="col-md-4 ">
+        <article id="adder" class="col-md-4 "></article>
         <h2>Student Estimator</h2>
         <hr>
         <p>This is quiz-Module 3: Vue Challenge (Level 3) at Oct/11/2019.</p>
         <p>Main goal: User can get the product of 3 inputs with two-way data binding.</p>
-        <fieldset class="mt-4">
-          <label for="firstNumber">studentsPerCourse:</label>
-          <input id="firstNumber" type="number" value=7>
+
+        <fieldset class="mt-2">
+          <label for="guest">studentsPerCourse(1 to 100):</label>
+          <input v-model="guest" id="guest" type="number" min="1" max="100">
+        </fieldset>
+
+        <fieldset class="mt-2">
+          <label for="firstNumber">coursesPerTerm(1 to 100):</label>
+          <input v-model="firstNumber" id="firstNumber" type="number" min="1" max="100">
           <span id="firstWarning" class="text-danger"></span>
         </fieldset>
 
-        <fieldset class="mt-4">
-          <label for="secondNumber"> coursesPerTerm:</label>
-          <input id="secondNumber" type="number" value="12">
+        <fieldset class="mt-2">
+          <label for="secondNumber">countOfTerms(1 to 100):</label>
+          <input v-model="secondNumber" id="secondNumber" type="number" min="1" max="100">
           <span id="secondWarning" class="text-danger"></span>
         </fieldset>
-
-        <fieldset class="mt-4">
-          <label for="thirdNumber">countOfTerms:</label>
-          <input id="thirdNumber" type="number" value=7>
-          <span id="thirdWarning" class="text-danger"></span>
-        </fieldset>
-
-
-      </div>
-      <!--end column 1-->
-
-      
-
-
-
-
-      <!--column 2 (5/12) -->
-      <div class="col-md-5 mb-4">
-        <h2>Try these:</h2>
-        <hr>
-        <button id="addButton" class="btn btn-primary">Product</button>
-        
-        <hr>
-        <p id="result">NaN</p>
-
-      </div>
-      <!-- end column 2-->
+        <h3 class="mt-2">{{result}}</h3>
 
     </div>
-    <!-- end row 1 -->
 
   </main>
 
   <!-- sticky footer with padding on y-axis (top and bottom) -->
+
   <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
       <span class="text-muted">Right-click / Inspect / Console</span>
       &#9670;
-      <a href="https://profcase.github.io/js-gui/">Demo</a>
+      <a href="https://denisecase.github.io/js-gui-vue/">Demo</a>
       &#9670;
-      <a href="https://github.com/profcase/js-gui">Source</a>
+      <a href="https://github.com/denisecase/js-gui-vue">Source</a>
     </div>
   </footer>
 
+
+
+  <!-- get current Bootstrap Material Design styles from https://mdbootstrap.com/md-bootstrap-cdn/ -->
+
+  <!-- JQuery -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.7/js/mdb.min.js"></script>
-  <script src="main.js"></script>
+  <!-- MDB core JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+
+  <!-- Vue.js must be added before our custom code from https://cdnjs.com/libraries/vue -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+
+  <!-- Vue components -->
+
+  <script src="components/adder/adder.js"></script>
+  <!--script src="components/subtracter/subtracter.js"></script>
+  <script src="components/findSum/findSum.js"></script>
+  <script src="components/coder/coder.js"></script-->
 
 </body>
 
